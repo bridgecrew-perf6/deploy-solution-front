@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {MessageDto} from "./dto/message.dto";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 function App() {
 
@@ -9,7 +11,7 @@ function App() {
 
   async function getMessage() : Promise<void> {
 
-    fetch( `http://localhost:3000/message`, {
+    fetch( `${process.env.REACT_APP_API_URL}/message`, {
     method: "GET",
     headers: {'Content-Type': 'application/json'},
     }).then( async (value: Response) => {
